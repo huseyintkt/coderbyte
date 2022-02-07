@@ -26,3 +26,28 @@
  * Input: ["abcgefd", "a,ab,abc,abcg,b,c,dog,e,efd,zzzz"]
  * Output: abcg,efd
  */
+
+function ArrayChallenge(strArr) {
+  let firstItemStr = strArr[0];
+  let secondItemStr = strArr[1];
+  let secondItemArr = secondItemStr.split(',');
+
+  for (index = 1; index < firstItemStr.length; index++) {
+    let firstWord = firstItemStr.slice(0, index);
+    let secondWord = firstItemStr.slice(index, firstItemStr.length);
+
+    let statusForFirst = secondItemArr.indexOf(firstWord);
+    let statusForSecond = secondItemArr.indexOf(secondWord);
+
+    if (statusForFirst !== -1 && statusForSecond !== -1) {
+      return `${firstWord}, ${secondWord}`;
+    }
+  }
+
+  return 'not possible';
+}
+
+// keep this function call here
+console.log(
+  ArrayChallenge(['baseball', 'a,all,b,ball,bas,base,cat,code,d,e,quit,z'])
+);
